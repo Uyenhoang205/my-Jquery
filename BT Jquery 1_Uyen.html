@@ -22,7 +22,7 @@
                     <td><button type="button" class="reset" value="mc">MC</button></td>
                     <td><button type="button" class="delete" value="del">Del</button></td>
                     <td><button type="button" class="division" value="/">/</button></td>
-                    <td><button type="button" class="multiplication" value="x">x</button></td>
+                    <td><button type="button" class="multiplication" value="*">*</button></td>
                 </tr>
                 <tr>
                     <td><button type="button" class="number" value="7">7</button></td>
@@ -58,7 +58,9 @@
             $("td").css({ "width": "92px", "height": "60px" });
             $("button").css({ "width": "92px", "height": "60px", "background-color": "#C0BEC1", "text-align": "center", "font-size": "30px", "border": "none" });
             $(".zero").css({ "width": "188px" });
-            $(".equal").css({ "height": "123px" });
+            $(".equal").css({"height": "123px"});
+            $(".input").css({"font-size":"30px", "padding-left":"15px"});
+            $(".result").css({"font-size":"45px", "float":"right"});
 
             //hover chuột -> đổi màu
             $("button").on('mouseover', function () {
@@ -71,8 +73,8 @@
             var input = '';
             $('button').click(function () {
                 if ($(this).val() == 'mc') {
-                    $('.input').val(0);
-                    $('.resutl').html(0);
+                    $('.input').html(0);
+                    $('.result').html(0);
                     input = '';
                     return true;
                 }
@@ -81,7 +83,7 @@
                 } else {
                     input += $(this).val();
                 }
-                $('.input').val(input);
+                $('.input').html(input);
             });
             $('.equal').click(function() {
                 $('.result').html(eval(input));
