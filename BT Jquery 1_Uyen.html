@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://code.jquery.com/jquery-2.2.4.js"
+        integrity="sha256-iT6Q9iMJYuQiMWNd9lDyBUStIq/8PuOW33aOqmvFpqI=" crossorigin="anonymous"></script>
+    <title>Bai tap Jquery 1_Uyen</title>
+</head>
+
+<body>
+    <div class="content">
+        <div class="input-box">
+            <div class="input" value=""></div>
+            <div class="result" value=""></div>
+        </div>
+        <div class="calculator-box">
+            <table>
+                <tr>
+                    <td><button type="button" class="reset" value="mc">MC</button></td>
+                    <td><button type="button" class="delete" value="del">Del</button></td>
+                    <td><button type="button" class="division" value="/">/</button></td>
+                    <td><button type="button" class="multiplication" value="x">x</button></td>
+                </tr>
+                <tr>
+                    <td><button type="button" class="number" value="7">7</button></td>
+                    <td><button type="button" class="number" value="8">8</button></td>
+                    <td><button type="button" class="number" value="9">9</button></td>
+                    <td><button type="button" class="subtraction" value="-">-</button></td>
+                </tr>
+                <tr>
+                    <td><button type="button" class="number" value="4">4</button></td>
+                    <td><button type="button" class="number" value="5">5</button></td>
+                    <td><button type="button" class="number" value="6">6</button></td>
+                    <td><button type="button" class="addition" value="+">+</button></td>
+                </tr>
+                <tr>
+                    <td><button type="button" class="number" value="1">1</button></td>
+                    <td><button type="button" class="number" value="2">2</button></td>
+                    <td><button type="button" class="number" value="3">3</button></td>
+                    <td rowspan="2"><button type="button" class="equal">=</button></td>
+                </tr>
+                <tr>
+                    <td colspan="2"><button type="button" class="zero" value="0">0</button></td>
+                    <td><button type="button" class="decimal" value=".">.</button></td>
+                </tr>
+            </table>
+        </div>
+    </div>
+    <script>
+        $(document).ready(function () {
+            //Chỉnh css
+            $(".content").css({ "background-color": "#535356", "width": "30%", "height": "500px", "margin-top": "8%", "margin-left": "35%", "padding-top": "30px" });
+            $(".input-box").css({ "background-color": "#7A9B34", "color": "white", "width": "90%", "height": "110px", "margin-left": "5%" });
+            $(".calculator-box").css({ "color": "white", "width": "90%", "height": "350px", "margin-left": "5%", "margin-top": "30px" });
+            $("td").css({ "width": "92px", "height": "60px" });
+            $("button").css({ "width": "92px", "height": "60px", "background-color": "#C0BEC1", "text-align": "center", "font-size": "30px", "border": "none" });
+            $(".zero").css({ "width": "188px" });
+            $(".equal").css({ "height": "123px" });
+
+            //hover chuột -> đổi màu
+            $("button").on('mouseover', function () {
+                this.style.backgroundColor = '#868487';
+            }).on('mouseout', function () {
+                this.style.backgroundColor = '#C0BEC1';
+            });
+
+            //Lấy giá trị click
+            var input = '';
+            $('button').click(function () {
+                if ($(this).val() == 'mc') {
+                    $('.input').val(0);
+                    $('.resutl').html(0);
+                    input = '';
+                    return true;
+                }
+                if ($(this).val() == 'del') {
+                    input = input.substr(0, input.length - 1);
+                } else {
+                    input += $(this).val();
+                }
+                $('.input').val(input);
+            });
+            $('.equal').click(function() {
+                $('.result').html(eval(input));
+            });
+        });
+    </script>
+</body>
+
+</html>
