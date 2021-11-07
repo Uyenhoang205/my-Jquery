@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://code.jquery.com/jquery-2.2.4.js"
+        integrity="sha256-iT6Q9iMJYuQiMWNd9lDyBUStIq/8PuOW33aOqmvFpqI=" crossorigin="anonymous">
+
+        </script>
+    <title>To do list_Uyen</title>
+</head>
+
+<body>
+    <div class="content">
+        <div class="title">TO DO LIST</div>
+        <div class="input">
+            <input class="input_content" placeholder="Nhập nội dung công việc" value="">
+            <button class="add">Thêm</button>
+        </div>
+        <div class="list">
+            <ul>
+                <li>
+                    <input class="checkbox" type="checkbox">Làm bài tập
+                    <button class="delete">x</button>
+                </li>
+            </ul>
+        </div>
+    </div>
+    <script>
+        //CSS
+        $('.content').css({ "background-color": "#FEFCC4", "border": "20px solid #9D5E3A", "width": "30%", "height": "500px", "margin-top": "8%", "margin-left": "35%", "padding": "30px 10px 10px 20px" });
+        $('.title').css({ "font-size": "30px", "text-align": "center", "padding": "20px", "color": "#373837" });
+        $('.input').css({ "height": "50px", "top": "30px" });
+        $('.input_content').css({ "height": "30px", "width": "75%", "font-size": "20px" });
+        $('.add').css({ "height": "35px", "width": "20%", "font-size": "20px", "background-color": "#8B635A", "color": "white" });
+        $('.list').css({ "height": "350px", "margin-top": "15px", "font-size": "25px", "color": "#373837" });
+        $('ul').css({ "list-style-type": "none", "margin": "0", "padding": "0" });
+        $('.delete').css({ "float": "right", "margin-right": "10px" });
+        //Hover
+        $('.add').on('mouseover', function () {
+            this.style.backgroundColor = '#8B4C49';
+        });
+        $('.add').on('mouseout', function () {
+            this.style.backgroundColor = '#8B635A';
+        });
+
+        //Input task
+        $('.add').click(function () {
+            var input = $('.input_content').val();
+            if (input != '') {
+                $('ul').append('<li><input class="checkbox" type="checkbox">' + input + '<button class="delete">x</button></li>');
+                $('.input_content').val('');
+                $('.delete').css({ "float": "right", "margin-right": "10px" });
+            }
+        });
+
+        //Complete task
+        $('ul').on('click', '.checkbox', function () {
+            $(this).parent().toggleClass('label-line-through');
+            // $(this).parent().toggleClass('active');
+            // $('.active').css({"text-decoration":"line-through"});
+        });
+
+        //Delete task
+        $('ul').on('click', '.delete', function () {
+            $(this).parent().remove();
+        });
+    </script>
+</body>
+
+</html>
